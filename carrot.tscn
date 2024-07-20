@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8rr1f4rncpy2"]
+
+[ext_resource type="Texture2D" uid="uid://dsvo7hubhmhas" path="res://rotduckfarmingTilesheetComplete.webp" id="1_drbbd"]
+[ext_resource type="Script" path="res://carrot.gd" id="1_x118s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6s3l"]
+atlas = ExtResource("1_drbbd")
+region = Rect2(176, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hdup"]
+atlas = ExtResource("1_drbbd")
+region = Rect2(160, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptk3f"]
+atlas = ExtResource("1_drbbd")
+region = Rect2(144, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6cu1"]
+atlas = ExtResource("1_drbbd")
+region = Rect2(128, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ahn"]
+atlas = ExtResource("1_drbbd")
+region = Rect2(192, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocvf4"]
+atlas = ExtResource("1_drbbd")
+region = Rect2(192, 192, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvn27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6s3l")
+}],
+"loop": true,
+"name": &"growlevel1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hdup")
+}],
+"loop": true,
+"name": &"growlevel2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptk3f")
+}],
+"loop": true,
+"name": &"growlevel3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6cu1")
+}],
+"loop": true,
+"name": &"growlevel4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1ahn")
+}],
+"loop": true,
+"name": &"growlevel5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocvf4")
+}],
+"loop": true,
+"name": &"seed",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t3t4g"]
+radius = 25.1794
+
+[node name="carrot" type="Node2D"]
+script = ExtResource("1_x118s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gvn27")
+animation = &"growlevel1"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_t3t4g")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
