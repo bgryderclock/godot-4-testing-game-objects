@@ -18,7 +18,7 @@ func _ready() -> void:
 	await get_tree().create_timer(4).timeout
 	$AnimatedSprite2D.play("growlevel5")
 	await get_tree().create_timer(5).timeout
-	queue_free() #deletes the carrot
+	#queue_free() #deletes the carrot
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,12 +42,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		#print("carrot event")
 		pass
 
-#func _unhandled_input(event):
-	#if event.is_action_pressed("left_mouse_click"):
-		#var mouse_pos = get_local_mouse_position()
-		#var polygon = $CollisionPolygon2D.polygon
-		#if Geometry.is_point_in_polygon(mouse_pos,polygon):
-			#do_whatever()
 
 
 
